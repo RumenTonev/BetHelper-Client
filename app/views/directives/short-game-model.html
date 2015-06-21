@@ -1,0 +1,163 @@
+<table class="table table-bordered table-striped" ng-style="{'font-size':'xx-small'}" ng-show="playersT">
+
+    <tr>
+        <td class="col-md-1"><span>{{obj.nick}}</span></td>
+
+        <td ng-repeat="profile in obj.teamGameProfiles" ng-class="{'greenClass':profile.isMileStone}"
+            class=" col-md-1 text-center sc{{profile.teamGameProfileId}}" ng-dblclick="profileSelect(profile,$event)">
+            <span ng-show="profile.redCardEvents.length>0" ng-style="{'color':'red'}">!</span><br/>
+            <span ng-show="profile.newManager != null" ng-style="{'color': 'green'}">NM</span>
+        </td>
+        <td ng-class="{'greenClass':obj.currentProfile.isMileStone}"
+            ng-dblclick="profileSelect(obj.currentProfile,$event)"
+            class="col-md-1 text-center sc{{obj.currentProfile.teamGameProfileId}}">
+            <span ng-show="obj.currentProfile.redCardEvents.length>0" ng-style="{'color':'red'}">!</span><br/>
+            <span ng-show="obj.currentProfile.newManager != null" ng-style="{'color': 'green'}">NM</span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span ng-style=" {'float': 'right'}">
+            <span>M</span><br/>
+            <span class="text-right">DM</span><br/>
+            <span>MS</span><br/>
+            <span>OL</span><br/>
+            <span>RN</span><br/>
+            <span>SG</span><br/>
+            <span>RG</span><br/>
+            <span>PE</span><br/>
+            <span>WW</span>
+</span>
+        </td>
+        <td ng-repeat="profile in obj.teamGameProfiles" ng-click="profileHover(profile)"
+            class="text-center sc{{profile.teamGameProfileId}}"
+            ng-class="{'greenClass':profile.isMileStone}">
+            <span>{{profile.gameDateMonth}}</span><br/>
+            <span>{{profile.gameDateDay}}</span><br/>
+            <span>  {{profile.matchSituation }}</span><br/>
+            <span>  {{profile.resultOutcomeLetter }}</span><br/>
+            <span> <a href="#/teams/{{profile.rivalName}}"> {{profile.rivalName}}</a></span><br/>
+            <span ng-style="profile.matchSituation == 'A' && {'color': 'red'}">  {{profile.ownGoals}}</span><br/>
+            <span ng-style="profile.matchSituation == 'A' && {'color': 'red'}">  {{profile.othersGoals}}</span><br/>
+            <span ng-hide="profile.missedPen==0&&profile.savedPen==0 ">  {{profile.missedPen}}/{{profile.savedPen}}</span><br/>
+            <span>  {{profile.woodWorks}}</span><br/>
+
+        </td>
+        <td ng-click="profileHover(obj.currentProfile)" class="text-center sc{{obj.currentProfile.teamGameProfileId}}"
+            ng-style="obj.currentProfile.isMileStone ===true && {'background-color': 'green'}">
+            <span>{{obj.currentProfile.gameDateMonth}}</span><br/>
+            <span>{{obj.currentProfile.gameDateDay}}</span><br/>
+            <span>  {{obj.currentProfile.matchSituation }}</span><br/>
+            <span>  {{obj.currentProfile.resultOutcomeLetter }}</span><br/>
+            <span>  {{obj.currentProfile.rivalName }}</span><br/>
+            <span ng-style="obj.currentProfile.matchSituation == 'A' && {'color': 'red'}">  {{obj.currentProfile.ownGoals}}</span><br/>
+            <span ng-style="obj.currentProfile.matchSituation == 'A' && {'color': 'red'}">  {{obj.currentProfile.othersGoals}}</span><br/>
+            <span ng-hide="obj.currentProfile.missedPen==0&&obj.currentProfile.savedPen==0 ">  {{obj.currentProfile.missedPen}}/{{obj.currentProfile.savedPen}}</span><br/>
+            <span>  {{obj.currentProfile.woodWorks}}</span><br/>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>TF</span>
+        </td>
+        <td ng-repeat="profile in obj.teamGameProfiles" ng-dblclick="profileChangeView(profile,$event)">
+        <span ng-hide="profile.visibilityMode" data-toggle="tooltip"
+              tooltip="{{profile.currentFormDetails}}"
+              tooltip-placement="top-right">  {{profile.currentFormLevel}}</span>
+
+            <input type="text" ng-show="profile.visibilityMode" ng-model="profile.currentFormLevel"
+                   ng-blur="changeInput(profile)" class="editProf">
+            <input type="text" ng-show="profile.visibilityMode" ng-model="profile.currentFormDetails"
+                   ng-blur="changeInputComment(profile)" class="editProf">
+        </td>
+        <td ng-dblclick="profileChangeView(obj.currentProfile,$event)">
+        <span ng-hide="obj.currentProfile.visibilityMode" data-toggle="tooltip"
+              tooltip="{{obj.currentProfile.currentFormDetails}}"
+              tooltip-placement="top-right">  {{obj.currentProfile.currentFormLevel}}</span>
+
+            <input type="text" ng-show="obj.currentProfile.visibilityMode"
+                   ng-model="obj.currentProfile.currentFormLevel"
+                   ng-blur="changeInput(obj.currentProfile)" class="editProf">
+            <input type="text" ng-show="obj.currentProfile.visibilityMode"
+                   ng-model="obj.currentProfile.currentFormDetails"
+                   ng-blur="changeInputComment(obj.currentProfile)" class="editProf">
+        </td>
+
+
+    </tr>
+    <tr>
+
+        <td>
+            <span>RF</span>
+        </td>
+        <td ng-repeat="profile in obj.teamGameProfiles">
+            <span data-toggle="tooltip"
+                  tooltip="{{profile.currentFormRivalDetails}}"
+                  tooltip-placement="bottom">  {{profile.currentRivalFormLevel}}</span>
+        </td>
+        <td>
+            <span data-toggle="tooltip"
+                  tooltip="{{obj.currentProfile.currentFormRivalDetails}}"
+                  tooltip-placement="bottom">  {{obj.currentProfile.currentRivalFormLevel}}</span>
+        </td>
+
+
+    </tr>
+
+
+    <tr ng-repeat="player in obj.players" class="text-center">
+        <td>
+
+            <span>{{player.playerName}} {{player.playerNumber}}</span><br/>
+            <span>{{player.position}}</span>
+        </td>
+        <td ng-repeat="activity in player.activities" ng-click="activityClick($event)" class="sc{{activity.profileId}}"
+            ng-class="{'greenClass':activity.isMileStone}">
+            <div ng-hide="activity.minutesPlayes=='N' ||activity.minutesPlayes=='r'">
+                <span ng-style="activity.isInjSub == true && {'color': 'red'}">  {{activity.minutesPlayes }}</span>
+                <span ng-hide="player.position==activity.playerCurrentPosition"> {{activity.playerCurrentPosition }}</span>
+                <br/>
+
+                <div ng-if="activity.subResult!=null"> {{activity.subResult}}</div>
+                <div ng-if="activity.redCard!=null" ng-style="{'background-color':'red'}">
+                    <span>  {{activity.redCard.munitesReceiving }}</span><br/>
+                    <span>  {{activity.redCard.resultReceiving }}</span><br/>
+                </div>
+                <div ng-if="activity.goals!==0" ng-style="activity.goals!==0 && {'color': 'red'}">{{activity.goals }}G
+                </div>
+                <div ng-if="activity.goalAssists!==0" ng-style="activity.activity.goalAssists!==0 && {'color': 'red'}">
+                    {{activity.goalAssists }}A
+                </div>
+            </div>
+        </td>
+
+        <td ng-click="activityClick($event)" class="sc{{player.currentActivity.profileId}}">
+  <span ng-hide="player.currentActivity.minutesPlayes=='N' ||player.currentActivity.minutesPlayes=='r'">
+                <span ng-style="player.currentActivity.minutesPlayes=='KM'  && {'color': 'red'}">  {{player.currentActivity.minutesPlayes }}</span>
+
+
+
+            </span>
+        </td>
+    </tr>
+
+    <tr ng-repeat="player in obj.newPlayers" class="text-center">
+        <td>
+
+            <span>{{player.playerName}} {{player.playerNumber}}</span>
+        </td>
+        <td ng-repeat="activity in player.activities" class="text-center">
+
+        </td>
+
+        <td class="text-center">
+
+            <span>{{player.currentMinPlayes}}  </span>
+
+            </span>
+        </td>
+    </tr>
+
+
+</table>

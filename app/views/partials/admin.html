@@ -1,0 +1,39 @@
+<div class="container" >
+    <div ng-controller="AdminCtrl">
+        Undefined form
+        <form novalidate class="simple-form">
+            profileId: <input type="text" ng-model="adprofile.profileId" /><br />
+            undefinedId: <input type="text" ng-model="adprofile.undefinedId" /><br />
+            playerId: <input type="text" ng-model="adprofile.playerId" /><br />
+            playerNewName: <input type="text" ng-model="adprofile.playerNewName" /><br />
+            <input type="submit" ng-click="submitTheForm(adprofile)" value="Save" />
+        </form>
+        Duplicate form
+        <form novalidate class="simple-form">
+            firstPlayerId: <input type="text" ng-model="dupprofile.firstPlayerId" /><br />
+            firstPlayerName: <input type="text" ng-model="dupprofile.firstPlayerName" /><br />
+            secondPlayerId: <input type="text" ng-model="dupprofile.secondPlayerId" /><br />
+            secondPlayerName: <input type="text" ng-model="dupprofile.secondPlayerName" /><br />
+            <input type="submit" ng-click="submitDuplicateForm(dupprofile)" value="Save" />
+        </form>
+        New Manger form
+        <form novalidate class="simple-form">
+           profileId: <input type="text" ng-model="dupprofile.profileId" /><br />
+            NewManagerName: <input type="text" ng-model="dupprofile.newManager" /><br />
+            <input type="submit" ng-click="submitManagerChange(dupprofile)" value="Save" />
+        </form>
+
+        DateTimen
+        <form novalidate class="simple-form">
+            gameId: <input type="text" ng-model="dupprofile.gameId" /><br />
+            NewManagerName: y<input type="text" ng-model="dupprofile.year" />
+            m<input type="text" ng-model="dupprofile.month" />
+            d<input type="text" ng-model="dupprofile.day" />
+            h<input type="text" ng-model="dupprofile.hour" />
+            m<input type="text" ng-model="dupprofile.min" />
+
+            <input type="submit" ng-click="submitGameStatusNew(dupprofile)" value="Save" />
+        </form>
+
+    </div>
+</div>

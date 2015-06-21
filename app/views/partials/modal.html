@@ -1,0 +1,37 @@
+<div class="modal-body" aria-hidden="false">
+
+
+    <span>allShots:{{modalOptions.profile.allShots}}</span><br/>
+
+    <span>bars:{{modalOptions.profile.bars}}</span><br/>
+
+    <span>goallines:{{modalOptions.profile.goallines}}</span><br/>
+
+    <span>missedPen:{{modalOptions.profile.missedPen}}</span><br/>
+
+    <span>savedPen:{{modalOptions.profile.savedPen}}</span><br/>
+
+    <span>shotOnGoal:{{modalOptions.profile.shotOnGoal}}</span><br/>
+
+    <span>newManager:{{modalOptions.profile.newManager}}</span><br/>
+
+    <span>redCards:</span><br/>
+
+    <ul ng-repeat="redCard in modalOptions.profile.redCardEvents">
+        <li>
+            <span>{{redCard.periodInMinutes}}m</span>
+        </li>
+        <li>
+            <span>{{redCard.countCurrentPlayersDifference}}{{redCard.redCardPlayStatus}}</span>
+        </li>
+
+        <li>
+            <span>{{redCard.resultReceiving}}</span>
+        </li>
+
+
+    </ul>
+    </li>
+
+    </ul>
+</div>

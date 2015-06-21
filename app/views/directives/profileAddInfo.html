@@ -1,0 +1,56 @@
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" ng-show="title">
+                <button type="button" class="close" ng-click="$hide()">&times;</button>
+                <h4 class="modal-title" ng-bind="title"></h4>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>
+                        <span>allShots:{{profile.allShots}}</span>
+                    </li>
+                    <li>
+                        <span>bars:{{profile.bars}}</span>
+                    </li>
+                    <li>
+                        <span>goallines:{{profile.goallines}}</span>
+                    </li>
+                    <li>
+                        <span>missedPen:{{profile.missedPen}}</span>
+                    </li>
+                    <li>
+                        <span>savedPen:{{profile.savedPen}}</span>
+                    </li>
+                    <li>
+                        <span>shotOnGoal:{{profile.shotOnGoal}}</span>
+                    </li>
+                    <li>
+                        <span>newManager{{profile.newManager}}</span>
+                    </li>
+                    <li>
+                        <ul ng-repeat="redCard in profile.redCardEvents">
+                            <li>
+                                <span>{{redCard.periodInMinutes}}m</span>
+                            </li>
+                            <li>
+                                <span>{{redCard.countCurrentPlayersDifference}}{{redCard.redCardPlayStatus}}</span>
+                            </li>
+
+                            <li>
+                                <span>{{redCard.resultReceiving}}</span>
+                            </li>
+
+
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="$hide()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

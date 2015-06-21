@@ -1,0 +1,26 @@
+<table class="table table-bordered">
+    <tr>
+        <th class="text-center">
+            Host
+        </th>
+        <th class="text-center">
+           LinkToProfile
+        </th>
+        <th class="text-center">
+            Guest
+        </th>
+
+    </tr>
+    <tr ng-repeat="game in games">
+        <td class="text-center">
+            {{game.hostModel.name}}
+        </td>
+
+        <td class="text-center">
+            <a href="#/games/{{game.gameId}}" ng-style="game.status !== 'Fixture' && {'color': 'red'}" >GameProfile {{game.dateForGame}}</a>
+        </td>
+        <td class="text-center">
+            {{game.guestModel.name}}
+        </td>
+    </tr>
+</table>
