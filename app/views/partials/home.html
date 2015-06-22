@@ -1,5 +1,22 @@
+
+<div id="legend" class="hide">
+    This is application for football statistics, mostly appropriate for gamblers.
+    "Home" contains links to "face-to-face" stats for every football game played today. Since it is vacation time
+    for english football, for this demo purpose I set date 11.04.2015 and only 6 games.
+    "Teams" contains links to every team archive page. Teams are all from England top four divisions for season 2014/2015.
+    The "Demo" button through adding message to Azure queue starts Azure Web Job, which seeks for available info
+    for current games on-line and if it is available push it through SignalR-result, else keep searching on scheduled time interval until
+    all games info is gotten or if any is missing after its starting time set its status to Postponed:
+    "Home" page-Links of a game with pushed info turns red in color.
+    "Game profile" page-push letter"t" to every titular-participant in current game in both teams tables in their last columns.
+
+    In real-time action game's link-color turn to red
+</div>
+ <span custom-popover  popover-placement="bottom"></span>
 <div class="container">
-    <button ng-click="demoClick()" class="secondaryButton" prevent-default>Secondary action</button>
+
+    <button ng-click="demoClick()" class="secondaryButton" prevent-default>Demo</button>
+
     <div class="row" >
         <div class="col-md-12" >
             <div class="panel panel-info">

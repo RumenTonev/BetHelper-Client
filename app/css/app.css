@@ -127,3 +127,15 @@ a{
 .secondaryButton{
     float:right;
 }
+.legend{
+    position:absolute;
+    float:left;
+    width:14%;
+    text-align:center;
+    color:red;
+
+}
+.legend-label{
+    color:#18bc9c;
+    text-decoration: underline;
+}

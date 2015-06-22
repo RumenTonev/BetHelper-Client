@@ -4,6 +4,7 @@ betHelper.controller('HomeCtrl', ['$rootScope','$scope','$filter','GamesResource
     function HomeCtrl($rootScope,$scope, $filter,GamesResource,subscribePrefix,myCache,TeamsResource,playersSignalRValuesUtilizer) {
         var cacheCurrentGames = myCache.get('currentGames');
         $rootScope.playersT=true;
+
         if (cacheCurrentGames) {
             $scope.games = cacheCurrentGames;
         }
@@ -22,6 +23,7 @@ betHelper.controller('HomeCtrl', ['$rootScope','$scope','$filter','GamesResource
 
 
         };
+
         $scope.$on(subscribePrefix + "notifyLinkMainPage", function (evt, data) {
             console.log(data);
             var currentPushedGame= $filter('filter')($scope.games, {gameId:  data.GameId})[0];
