@@ -7,6 +7,7 @@ betHelper.controller('LoginCtrl', ['$scope', '$location', 'notifier', 'identity'
         $scope.login = function(user, loginForm) {
             if (loginForm.$valid) {
                 auth.login(user).then(function(success) {
+					debugger;
                     if (success) {
                         notifier.success('Successful login!');
                         $location.path('/');

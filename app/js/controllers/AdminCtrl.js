@@ -29,6 +29,14 @@ betHelper.controller('AdminCtrl', ['$location','$scope','ProfilesResource','noti
                     $location.path('/admin');
                 });
         };
+		$scope.updatePlayerStatus = function(playerModel) {
+            ProfilesResource.updatePlayerStatus(playerModel)
+                .then(function() {
+                    notifier.success('Player data updates successfully!!');
+                    $location.path('/admin');
+                });
+        };
+		
 
     }]);/**
  * Created by rumen on 12/13/2014.

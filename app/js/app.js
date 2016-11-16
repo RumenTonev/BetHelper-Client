@@ -62,7 +62,8 @@ var betHelper = angular.module('betHelper', ['ngRoute', 'ngResource', 'ngCookies
 
     })
     .value('toastr', toastr)
-.constant('baseServiceUrl','http://bethelpertrial.azurewebsites.net/')
-
-betHelper.value('signalRServer', 'http://bethelpertrial.azurewebsites.net/');
+	.constant('baseServiceUrl','http://bethelperfr.azurewebsites.net/')
+// .constant('baseServiceUrl','http://localhost:23610/')
+// betHelper.value('signalRServer', 'http://localhost:23610/');
+betHelper.value('signalRServer', 'http://bethelperfr.azurewebsites.net/');
 

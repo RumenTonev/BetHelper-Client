@@ -59,6 +59,7 @@ betHelper.factory('auth', ['$http', '$q', 'identity', 'authorization', 'errorHan
                 var headers = authorization.getAuthorizationHeader();
                 $http.get(usersApi + '/userInfo', {headers: headers})
                     .success(function (response) {
+						debugger;
                         var currentUser = identity.getCurrentUser();
                         angular.extend(currentUser, {userInfo: response});
                         identity.setCurrentUser(currentUser);
@@ -74,10 +75,10 @@ betHelper.factory('auth', ['$http', '$q', 'identity', 'authorization', 'errorHan
 
             if (identity.getCurrentUser()) {
 
-                this.userInfo();
+                var kur=this.userInfo();
 
                 identity.getCurrentUser();
-                if (identity.getCurrentUser().userInfo.isAdmin == false) {
+                if (identity.getCurrentUser().userInfo&&identity.getCurrentUser().userInfo.isAdmin == false) {
                     return $q.reject('not authorized');
                 }
                 return true;

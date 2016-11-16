@@ -12,7 +12,8 @@ betHelper.factory('ProfilesResource', ['$resource', 'baseServiceUrl', function($
         'updateCurrentUndefinedValues': {  method: 'POST', params: {action:'UpdateUndefinedProfile' }, isArray: false },
         'updateDuplicateValues': {  method: 'POST', params: {action:'UpdateDuplicateProfile' }, isArray: false },
         'enterNewManager': {  method: 'PUT', params: {action:'UpdateManager' }, isArray: false },
-        'enterNewGameStatus': {  method: 'PUT', params: {action:'UpdateGameStatus' }, isArray: false }
+        'enterNewGameStatus': {  method: 'PUT', params: {action:'UpdateGameStatus' }, isArray: false },
+		'updatePlayerStatus': {  method: 'PUT', params: {action:'UpdateIsMiss' }, isArray: false }
     });
 
     return {
@@ -36,6 +37,9 @@ betHelper.factory('ProfilesResource', ['$resource', 'baseServiceUrl', function($
         },
         submitNewGameStatus: function(profile) {
             return ProfilesResource.enterNewGameStatus(profile).$promise;
+        },
+		updatePlayerStatus: function(profile) {
+            return ProfilesResource.updatePlayerStatus(profile).$promise;
         }
     }
 }]);

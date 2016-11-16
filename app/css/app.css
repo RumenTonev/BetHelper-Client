@@ -85,6 +85,10 @@ input.ng-dirty.ng-valid.validity {
     background-color:#ffffff;
 
 }
+.isMiss {
+color:red;
+}
+
 .keyMiss{
     background-color:#ffff00;
 }

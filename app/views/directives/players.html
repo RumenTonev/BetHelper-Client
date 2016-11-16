@@ -123,12 +123,13 @@
             <span>{{player.playerName}}</span><br/>
             <span>{{player.playerNumber}}</span><br/>
             <span>{{player.position}}</span>
+			<span  ng-hide="true">{{player.playerId}}</span>
         </td>
 
         <td ng-repeat="activity in player.activities" ng-click="activityClick($event)" class="sc{{activity.profileId}}"
-            ng-class="{'greenClass':activity.isMileStone ,'keyMiss':activity.isKeyMiss}">
+            ng-class="{'greenClass':activity.isMileStone ,'keyMiss':activity.isKeyMiss,'isMiss':activity.isMiss}">
                 <span ng-hide="activity.minutesPlayes=='N' ||activity.minutesPlayes=='r'">
-                <span ng-style="activity.isInjSub == true && {'color': 'red'}">  {{activity.minutesPlayes }}</span>
+                <span ng-style="(activity.isInjSub == true||activity.isMiss) && {'color': 'red'}">  {{activity.minutesPlayes }}</span>
 
                     <span ng-hide="isRT">RT</span>
                     <br/>
@@ -142,13 +143,14 @@
                     <span ng-hide="activity.allAssists===0">  {{activity.allAssists}}A </span>
                 <span ng-hide="activity.goalAssists===0"
                       ng-style="activity.activity.goalAssists!==0 && {'color': 'red'}"> {{activity.goalAssists }}A</span><br/>
-<span ng-hide="player.position==activity.playerCurrentPosition"> {{activity.playerCurrentPosition }}</span>
+<span ng-hide="player.position==activity.playerCurrentPosition"> {{activity.playerCurrentPosition }}</span><br/>
+<span ng-hide="!activity.isMiss"> {{activity.missReason }}</span>
                 </span>
         </td>
 
         <td ng-click="activityClick($event)" class="sc{{player.currentActivity.profileId}}">
   <span ng-hide="player.currentActivity.minutesPlayes=='N' ||player.currentActivity.minutesPlayes=='r'">
-                <span ng-style="player.currentActivity.isInjSub == true && {'color': 'red'}">  {{player.currentActivity.minutesPlayes }}</span>
+                <span ng-style="(player.currentActivity.isInjSub == true||player.currentActivity.isMiss) && {'color': 'red'}" >  {{player.currentActivity.minutesPlayes }}</span>
                     <span ng-hide="player.position==player.currentActivity.playerCurrentPosition"> {{player.currentActivity.playerCurrentPosition }}</span>
                     <br/>
                       <span>  {{player.currentActivity.subResult}}</span><br/>
@@ -162,7 +164,7 @@
                     <span ng-hide="player.currentActivity.allAssists===0">  {{player.currentActivity.allAssists}} </span>
                 <span ng-hide="player.currentActivity.goalAssists===0"
                       ng-style="player.currentActivity.goalAssists!==0 && {'color': 'red'}"> {{player.currentActivity.goalAssists }}A</span><br/>
-
+<span ng-hide="player.currentActivity.isMiss===false"> {{player.currentActivity.missReason }}</span><br/>
                 </span>
             <!--<span  >{{player.currentGameMinPlayes}}  </span>-->
 

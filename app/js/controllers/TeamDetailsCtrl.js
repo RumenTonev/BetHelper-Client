@@ -49,6 +49,7 @@ betHelper.controller('TeamDetailsCtrl', ['$rootScope', '$scope', '$filter', '$ro
         }
 
         $scope.profileSelect = function (profile, clickEvent) {
+			debugger;
             profile.isMileStone = !profile.isMileStone;
 
             function nextMileStone(profileInner) {
@@ -68,19 +69,22 @@ betHelper.controller('TeamDetailsCtrl', ['$rootScope', '$scope', '$filter', '$ro
             var profiPlayers = underscore.filter($scope.profileModel.players, playerprofi);
 
             function activityto(activity) {
+//return activity.minutesPlayes.startsWith("N")
 
-                return activity.ps > profile.sh && ( activity.minutesPlayes.startsWith("N")
+                return activity.profileId > profile.teamGameProfileId && ( activity.minutesPlayes.startsWith("N")
                     || activity.minutesPlayes.startsWith("r") || activity.minutesPlayes.startsWith("^") || activity.minutesPlayes.startsWith("v"));
             }
 
             for (var i = 0; i < profiPlayers.length; i++) {
                 var currentActivities = underscore.filter(profiPlayers[i].activities, activityto);
-
+debugger;
                 for (var k = 0; k < currentActivities.length; k++) {
+					debugger;
                     currentActivities[k].isKeyMiss = profile.isMileStone;
                 }
 
             }
+			
             if (angular.element('.sc' + profile.teamGameProfileId).hasClass('greenClass')) {
                 angular.element('.sc' + profile.teamGameProfileId).removeClass('greenClass');
             }

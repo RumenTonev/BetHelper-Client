@@ -26,13 +26,22 @@
         DateTimen
         <form novalidate class="simple-form">
             gameId: <input type="text" ng-model="dupprofile.gameId" /><br />
-            NewManagerName: y<input type="text" ng-model="dupprofile.year" />
+            y<input type="text" ng-model="dupprofile.year" />
             m<input type="text" ng-model="dupprofile.month" />
             d<input type="text" ng-model="dupprofile.day" />
             h<input type="text" ng-model="dupprofile.hour" />
             m<input type="text" ng-model="dupprofile.min" />
 
             <input type="submit" ng-click="submitGameStatusNew(dupprofile)" value="Save" />
+        </form>
+		PlayerUpdate
+        <form novalidate class="simple-form">
+            player<input type="text" ng-model="isMiss.playerId" /><br />
+            profile<input type="text" ng-model="isMiss.profileId" /><br />
+			reason<input type="text" ng-model="isMiss.missReason" />
+          
+
+            <input type="submit" ng-click="updatePlayerStatus(isMiss)" value="Save" />
         </form>
 
     </div>

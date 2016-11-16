@@ -24,7 +24,6 @@ betHelper.factory('identity', ['$cookieStore', function($cookieStore) {
             currentUser = user;
         },
         isAuthenticated: function() {
-
             return !!this.getCurrentUser();
         }
     }

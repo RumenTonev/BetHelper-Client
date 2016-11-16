@@ -1,7 +1,7 @@
 ﻿
 // version 0.1
 
-angular.module("tt.SignalR", ["ng"]).value("subscribePrefix", "tt.signalr:subscribe").value("serverUrl",'http://bethelpertrial.azurewebsites.net/');
+angular.module("tt.SignalR", ["ng"]).value("subscribePrefix", "tt.signalr:subscribe").value("serverUrl",'http://localhost:23610/');
 
 angular.module("tt.SignalR").factory("hubProxy", ["$rootScope", "subscribePrefix","serverUrl", function ($rootScope, subscribePrefix,serverUrl) {
     function signalRHubProxyFactory(serverUrl, hubName) {
